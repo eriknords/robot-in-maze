@@ -10,22 +10,16 @@ import java.util.Random;
  *
  * @author Erik Nordström (tfy15enm)
  */
-public class RandomRobot {
+public class RandomRobot extends AbstractRobot {
 
     private static final Random RANDOM_GENERATOR = new Random();
-
-    private Position position;
-    private Position previousPosition;
-    private final Maze maze;
 
     /**
      * Initializes objects needed for the RandomRobot.
      * @param inputMaze the maze
      */
     public RandomRobot(Maze inputMaze) {
-        maze = inputMaze;
-        position = maze.getStart();
-        previousPosition = maze.getStart();
+        super(inputMaze);
     }
 
     /**
@@ -54,34 +48,5 @@ public class RandomRobot {
             int random = RANDOM_GENERATOR.nextInt(movablePositions.size());
             setPosition(movablePositions.get(random));
         }
-    }
-
-    /**
-     * Return this {@code Position}
-     * @return Position
-     */
-    public Position getPosition() {
-        return position;
-    }
-
-    /**
-     * Sets this {@code Position} to the new position.
-     * @param newPosition the position we want to move to
-     */
-    private void setPosition(Position newPosition) {
-        if (position.isAdjacent(newPosition) && maze.isMovable(newPosition)) {
-            previousPosition = position;
-            position = newPosition;
-            return;
-        }
-        throw new RuntimeException("POSITION ERROR: Robot1.0 cam not move to the new position.");
-    }
-
-    /**
-     * Return true if the RandomRobot has reached the goal
-     * @return boolean
-     */
-    public boolean hasReachedGoal() {
-        return maze.isGoal(position);
     }
 }
