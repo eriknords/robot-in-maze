@@ -20,7 +20,7 @@ public class RobotTest {
     public static void main(String[] args) {
         int moves = 0;
 
-        try (Reader input = new FileReader("/home/erik/projects/robot-in-maze/src/robot2_0/labyrint.txt")) {
+        try (Reader input = new FileReader("/home/erik/projects/robot-in-maze/src/main/robot2_0/labyrint.txt")) {
             // GIVEN a valid maze
             Maze maze = new Maze(input);
             RandomRobot robot = new RandomRobot(maze);
