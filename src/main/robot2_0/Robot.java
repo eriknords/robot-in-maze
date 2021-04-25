@@ -27,6 +27,15 @@ public interface Robot {
     void setPosition(Position newPosition);
 
     /**
+     * Checks of it is possible to set this {@code Position} to the new position. Returns
+     * true if it is not blocked by anything or outside the boundaries defined by the
+     * constants NR_OF_COLUMNS, NR_OF_ROWS and x=y=0.
+     * @param newPosition The new position
+     * @return boolean
+     */
+    boolean canSetPosition(Position newPosition);
+
+    /**
      * Return true if the RandomRobot has reached the goal
      * @return boolean
      */
