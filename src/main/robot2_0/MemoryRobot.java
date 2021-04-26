@@ -14,7 +14,7 @@ public class MemoryRobot extends AbstractRobot {
 
     private final Stack<Node> dfsStack = new Stack<>();
     private final Stack<Node> visitedStack = new Stack<>();
-    private final Node[][] visitedMatrix;
+    private final ArrayList<Position> visitedNodes = new ArrayList<>();
 
     /**
      * Initializes objects and attributes needed for the MemoryRobot.
@@ -23,14 +23,7 @@ public class MemoryRobot extends AbstractRobot {
     public MemoryRobot(Maze inputMaze) {
         super(inputMaze);
 
-        visitedMatrix = new Node[maze.getNumColumns()][maze.getNumRows()];
-
-        for (int x = 0; x < maze.getNumColumns(); x++) {
-            for (int y = 0; y < maze.getNumRows(); y++) {
-                visitedMatrix[x][y] = new Node(new Position(x, y));
-            }
-        }
-        dfsStack.push(visitedMatrix[maze.getStart().getX()][maze.getStart().getY()]);
+        dfsStack.push(new Node(maze.getStart()));
     }
 
     /**
@@ -41,7 +34,7 @@ public class MemoryRobot extends AbstractRobot {
     @Override
     public void move() {
         Node currentNode = dfsStack.pop();
-        visitedMatrix[currentNode.position.getX()][currentNode.position.getY()].visit();
+        visitedNodes.add(currentNode.position);
 
         if (canSetPosition(currentNode.position)) {
             setPosition(currentNode.position);
@@ -68,9 +61,8 @@ public class MemoryRobot extends AbstractRobot {
         List<Node> unvisitedNodes = new ArrayList<>();
 
         for (Position neighbour : currentNode.position.getAllAdjacent()) {
-            if (maze.isMovable(neighbour) && !visitedMatrix[neighbour.getX()][neighbour.getY()]
-                    .isVisited()) {
-                unvisitedNodes.add(visitedMatrix[neighbour.getX()][neighbour.getY()]);
+            if (maze.isMovable(neighbour) && !visitedNodes.contains(neighbour)) {
+                unvisitedNodes.add(new Node(neighbour));
             }
         }
         return unvisitedNodes;
