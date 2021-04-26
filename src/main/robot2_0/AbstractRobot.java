@@ -44,13 +44,12 @@ public abstract class AbstractRobot implements Robot {
             position = newPosition;
             return;
         }
-        throw new RuntimeException("POSITION ERROR: Robot cam not move to the new position.");
+        throw new RuntimeException("POSITION ERROR: Robot can not move to the new position.");
     }
 
     /**
-     * Sets this {@code Position} to the new position if it is movable and adjacent.
+     * Checks if this {@code Position} is movable and adjacent.
      * @param newPosition the position we want to move to
-     * @throws RuntimeException the new position is not movable/adjacent
      */
     @Override
     public boolean canSetPosition(Position newPosition) {

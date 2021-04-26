@@ -19,7 +19,7 @@ public class LeftHandRuleRobot extends AbstractRobot {
             setPosition(position.getPosToNorth());
             return;
         }
-        if (!MoveInDirection() && !outerCorner() && !innerCorner()) {
+        if (!moveInDirection() && !outerCorner() && !innerCorner()) {
             previousPosition = position;
             // Turn 180 degrees
             direction.turnLeft();
@@ -47,7 +47,7 @@ public class LeftHandRuleRobot extends AbstractRobot {
      * Tries to move the robot in its current direction while still having its hand on the left wall.
      * @return boolean
      */
-    private boolean MoveInDirection() {
+    private boolean moveInDirection() {
         if (direction.getDirection() == Direction.NORTH_DIRECTION
                 && !maze.isMovable(position.getPosToWest())
                 && canSetPosition(position.getPosToNorth())) {
