@@ -24,7 +24,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 import robot2_0.Maze;
-//import robot2_0.MemoryRobot;
+import robot2_0.MemoryRobot;
 import robot2_0.Position;
 import robot2_0.RandomRobot;
 import robot2_0.LeftHandRuleRobot;
@@ -270,7 +270,7 @@ public class MazeSimulation {
                     try {
                         switch(type) {
                             case Memory:
-                                //runSimulation(new MemoryRobot(maze));
+                                runSimulation(new MemoryRobot(maze));
                                 break;
                             case LeftHand:
                                 runSimulation( new LeftHandRuleRobot(maze));

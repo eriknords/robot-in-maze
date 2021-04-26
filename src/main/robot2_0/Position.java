@@ -92,7 +92,7 @@ public class Position {
      * Return a list of all positions
      * @return List<Position>
      */
-    private List<Position> getAllAdjacent() {
+    public List<Position> getAllAdjacent() {
         return Arrays.asList(
                 new Position(x, y + 1),
                 new Position(x, y - 1),

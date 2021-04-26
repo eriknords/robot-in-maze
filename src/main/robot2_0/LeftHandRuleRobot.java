@@ -9,10 +9,18 @@ package robot2_0;
  */
 public class LeftHandRuleRobot extends AbstractRobot {
 
+    /**
+     * Initializes objects needed for the LeftHandRuleRobot.
+     * @param inputMaze the maze
+     */
     public LeftHandRuleRobot(Maze inputMaze) {
         super(inputMaze);
     }
 
+    /**
+     * Moves the robot either north if no walls are nearby, or forward while still
+     * having its robotic hand against the wall.
+     */
     @Override
     public void move() {
         if (noNearbyWalls()) {
