@@ -29,9 +29,9 @@ public class MemoryRobotTest {
             }
             // THEN verify that the goal has been reached (can't use JUnit when compiling in terminal)
             if (robot.hasReachedGoal()) {
-                System.out.printf("SUCCESS: LeftHandRuleRobot reached the goal after %d moves\n", moves);
+                System.out.printf("SUCCESS: MemoryRobot reached the goal after %d moves\n", moves);
             } else {
-                System.out.printf("FAIL: LeftHandRuleRobot did not manage to reach the goal after %d moves\n", moves);
+                System.out.printf("FAIL: MemoryRobot did not manage to reach the goal after %d moves\n", moves);
             }
         } catch (IOException exception) {
             exception.printStackTrace();

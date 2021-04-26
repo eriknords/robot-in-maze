@@ -30,7 +30,6 @@ public class MemoryRobot extends AbstractRobot {
                 visitedMatrix[x][y] = new Node(new Position(x, y));
             }
         }
-        visitedMatrix[maze.getStart().getX()][maze.getStart().getY()].visit();
         dfsStack.push(visitedMatrix[maze.getStart().getX()][maze.getStart().getY()]);
     }
 
@@ -46,18 +45,16 @@ public class MemoryRobot extends AbstractRobot {
 
         if (canSetPosition(currentNode.position)) {
             setPosition(currentNode.position);
-            System.out.println("can");
-        } else {
-            previousPosition = currentNode.position;
-            System.out.println("NOT");
         }
 
         List<Node> unvisitedNeighbours = getUnvisitedNeighbours(currentNode);
         stackNeighbours(unvisitedNeighbours);
 
         if (unvisitedNeighbours.isEmpty() && !visitedStack.isEmpty()) {
+            // return to node it came from
             dfsStack.push(visitedStack.pop());
         } else {
+            // add current node to stack of visited nodes
             visitedStack.push(currentNode);
         }
     }
