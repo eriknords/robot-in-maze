@@ -52,7 +52,7 @@ public class Direction {
             this.direction = NORTH_DIRECTION;
         } else if (diff.getY() == 1 && diff.getX() == 0) {
             this.direction = SOUTH_DIRECTION;
-        } else {
+        } else if (diff.getY() != 0 && diff.getX() != 0) {
             throw new RuntimeException("INVALID POSITION: Current position is not adjacent to previous.");
         }
     }
