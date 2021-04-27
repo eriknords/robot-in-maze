@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.Reader;
+import java.io.FileReader;
 import java.util.Objects;
 
 /**
@@ -17,7 +19,7 @@ public class MemoryRobotTest {
     private static MemoryRobot robot;
 
     @BeforeEach
-    public void beforeClass() throws FileNotFoundException {
+    public void beforeMethod() throws FileNotFoundException {
         // Hopefully this will work since maze.txt is located in test resources
         String file = Objects.requireNonNull(MemoryRobotTest.class.getClassLoader()
                 .getResource("maze.txt")).getFile();
