@@ -82,20 +82,6 @@ public class DirectionTest {
     }
 
     @Test
-    void testUpdateDirectionNoWhere() {
-        // GIVEN an initial direction and a previous and current position
-        int initialDirection = direction.getDirection();
-        Position previous = new Position(0, 0);
-        Position current = new Position(0, 0);
-
-        // WHEN updating the direction
-        direction.updateDirection(previous, current);
-
-        // THEN the updated direction should be the same as the initial one
-        Assertions.assertEquals(initialDirection, direction.getDirection());
-    }
-
-    @Test
     void testUpdateDirectionInvalidPositions() {
         // GIVEN a previous and current position that is not adjacent to each other
         Position previous = new Position(0, 0);
@@ -107,7 +93,7 @@ public class DirectionTest {
             // THEN a RunTimeException is thrown
         } catch (RuntimeException re) {
             Assertions.assertEquals(re.getMessage(),
-                    "INVALID POSITION: Current position is not adjacent to previous");
+                    "INVALID POSITION: Current position is not adjacent to previous.");
         }
     }
 }
