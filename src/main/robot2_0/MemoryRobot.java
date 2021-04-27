@@ -12,8 +12,8 @@ import java.util.Stack;
  */
 public class MemoryRobot extends AbstractRobot {
 
-    private final Stack<Node> dfsStack = new Stack<>();
-    private final Stack<Node> visitedStack = new Stack<>();
+    private final Stack<Position> dfsStack = new Stack<>();
+    private final Stack<Position> visitedStack = new Stack<>();
     private final ArrayList<Position> visitedNodes = new ArrayList<>();
 
     /**
@@ -23,7 +23,7 @@ public class MemoryRobot extends AbstractRobot {
     public MemoryRobot(Maze inputMaze) {
         super(inputMaze);
 
-        dfsStack.push(new Node(maze.getStart()));
+        dfsStack.push(maze.getStart());
     }
 
     /**
@@ -33,14 +33,14 @@ public class MemoryRobot extends AbstractRobot {
      */
     @Override
     public void move() {
-        Node currentNode = dfsStack.pop();
-        visitedNodes.add(currentNode.position);
+        Position currentNode = dfsStack.pop();
+        visitedNodes.add(currentNode);
 
-        if (canSetPosition(currentNode.position)) {
-            setPosition(currentNode.position);
+        if (canSetPosition(currentNode)) {
+            setPosition(currentNode);
         }
 
-        List<Node> unvisitedNeighbours = getUnvisitedNeighbours(currentNode);
+        List<Position> unvisitedNeighbours = getUnvisitedNeighbours(currentNode);
         stackNeighbours(unvisitedNeighbours);
 
         if (unvisitedNeighbours.isEmpty() && !visitedStack.isEmpty()) {
@@ -57,12 +57,12 @@ public class MemoryRobot extends AbstractRobot {
      * @param currentNode the current node
      * @return List<Node>
      */
-    private List<Node> getUnvisitedNeighbours(Node currentNode) {
-        List<Node> unvisitedNodes = new ArrayList<>();
+    private List<Position> getUnvisitedNeighbours(Position currentNode) {
+        List<Position> unvisitedNodes = new ArrayList<>();
 
-        for (Position neighbour : currentNode.position.getAllAdjacent()) {
+        for (Position neighbour : currentNode.getAllAdjacent()) {
             if (maze.isMovable(neighbour) && !visitedNodes.contains(neighbour)) {
-                unvisitedNodes.add(new Node(neighbour));
+                unvisitedNodes.add(neighbour);
             }
         }
         return unvisitedNodes;
@@ -72,8 +72,8 @@ public class MemoryRobot extends AbstractRobot {
      * Push each neighbour node to the Depth First Search stack.
      * @param neighbours all adjacent nodes
      */
-    private void stackNeighbours(List<Node> neighbours) {
-        for (Node node : neighbours) {
+    private void stackNeighbours(List<Position> neighbours) {
+        for (Position node : neighbours) {
             dfsStack.push(node);
         }
     }
