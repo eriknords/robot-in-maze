@@ -40,7 +40,7 @@ public class RandomRobot extends AbstractRobot {
         // If no positions were added to the list
         if (movablePositions.isEmpty()) {
             if (position.equals(previousPosition)) {
-                throw new RuntimeException("INVALID MAZE: Robot1.0 can not move from start position.");
+                throw new RuntimeException("INVALID MAZE: RandomRobot can not move from start position.");
             }
             // Move back to previous position
             setPosition(previousPosition);

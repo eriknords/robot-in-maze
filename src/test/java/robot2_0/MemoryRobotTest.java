@@ -7,9 +7,13 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.Objects;
 
+/**
+ * A test program to test that the MemoryRobot is moving around in an arbitrary maze until it reaches the goal.
+ * @author Erik Nordström (tfy15enm)
+ */
 public class MemoryRobotTest {
 
-    private static final int MAX_MOVES = 100;
+    private static final int MAX_MOVES = 200;
     private static MemoryRobot robot;
 
     @BeforeEach
@@ -25,10 +29,10 @@ public class MemoryRobotTest {
 
     @Test
     public void testMemoryRobot() {
-        // GIVEN a maze and the random robot
+        // GIVEN a maze and the memory robot
         int moves = 0;
 
-        // WHEN moving the robot unit goal is reached (or very high number of max moves for complex mazes)
+        // WHEN moving the robot until goal is reached (or very high number of max moves for complex mazes)
         while (!robot.hasReachedGoal() && moves < MAX_MOVES) {
             robot.move();
             moves++;
