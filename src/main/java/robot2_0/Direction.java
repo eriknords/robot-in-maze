@@ -43,18 +43,17 @@ public class Direction {
     public void updateDirection(Position previousPos, Position currentPos) {
         Position diff = new Position(currentPos.getX() - previousPos.getX(),
                 currentPos.getY() - previousPos.getY());
-        try {
-            if (diff.getY() == 0 && diff.getX() == 1) {
-                this.direction = EAST_DIRECTION;
-            } else if (diff.getY() == 0 && diff.getX() == -1) {
-                this.direction = WEST_DIRECTION;
-            } else if (diff.getY() == -1 && diff.getX() == 0) {
-                this.direction = NORTH_DIRECTION;
-            } else if (diff.getY() == 1 && diff.getX() == 0) {
-                this.direction = SOUTH_DIRECTION;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        if (diff.getY() == 0 && diff.getX() == 1) {
+            this.direction = EAST_DIRECTION;
+        } else if (diff.getY() == 0 && diff.getX() == -1) {
+            this.direction = WEST_DIRECTION;
+        } else if (diff.getY() == -1 && diff.getX() == 0) {
+            this.direction = NORTH_DIRECTION;
+        } else if (diff.getY() == 1 && diff.getX() == 0) {
+            this.direction = SOUTH_DIRECTION;
+        } else {
+            throw new RuntimeException("INVALID POSITION: Current position is not adjacent to previous");
         }
     }
 }
