@@ -30,8 +30,7 @@ public class LeftHandRuleRobot extends AbstractRobot {
         if (!moveInDirection() && !outerCorner() && !innerCorner()) {
             previousPosition = position;
             // Turn 180 degrees
-            direction.turnLeft();
-            direction.turnLeft();
+            direction.turnBack();
         }
         direction.updateDirection(previousPosition, position);
     }
@@ -83,7 +82,7 @@ public class LeftHandRuleRobot extends AbstractRobot {
 
     /**
      * checks for an outer corner of a wall inside the maze (not the boundary of the maze). If one is
-     * found, the robot move pasts the corner while still keeping the hand on the wall.
+     * found, the robot move pasts the outer corner while still keeping the hand on the wall.
      * @return boolean
      */
     private boolean outerCorner() {
@@ -113,7 +112,7 @@ public class LeftHandRuleRobot extends AbstractRobot {
 
     /**
      * checks for an inner corner of a wall inside the maze. If one is found, the robot move pasts
-     * the corner while still keeping the hand on the wall.
+     * the inner corner while still keeping the hand on the wall.
      * @return boolean
      */
     private boolean innerCorner() {

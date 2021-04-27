@@ -6,7 +6,8 @@ import java.util.Stack;
 
 /**
  * This class represents a MemoryRobot that extends the AbstractRobot class. It uses two stacks (one for
- * Depth First Search and one for visited nodes) and a Node matrix to keep track of visited nodes in the maze.
+ * Depth First Search and one for visited nodes (i.e. positions)) and an ArrayList to keep track of
+ * visited nodes in the maze.
  *
  * @author Erik Nordström (tfy15enm)
  */
@@ -55,7 +56,7 @@ public class MemoryRobot extends AbstractRobot {
     /**
      * Finds movable and unvisited neighbouring nodes and returns them as a list.
      * @param currentNode the current node
-     * @return List<Node>
+     * @return List<Position>
      */
     private List<Position> getUnvisitedNeighbours(Position currentNode) {
         List<Position> unvisitedNodes = new ArrayList<>();

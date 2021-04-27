@@ -28,17 +28,12 @@ public class Direction {
     public int getDirection() {
         return direction;
     }
+
     /**
-     * Turn 90 degree clockwise
+     * Turn 180 degrees
      */
-    public void turnRight() {
-        this.direction = (this.direction + 1) % 4;
-    }
-    /**
-     * Turn 90 degree counterclockwise
-     */
-    public void turnLeft() {
-        this.direction = (this.direction + 3) % 4;
+    public void turnBack() {
+        this.direction = (this.direction + 2) % 4;
     }
     /**
      * Calculates direction of the current position with regards to the previous position
