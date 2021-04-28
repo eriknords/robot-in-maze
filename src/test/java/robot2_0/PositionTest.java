@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * A test program to test functionality of the Position class.
+ * @author Erik Nordström (tfy15enm)
+ */
 public class PositionTest {
 
     private static Position position;
@@ -26,7 +30,7 @@ public class PositionTest {
 
         // WHEN getting positions in all directions
         // THEN verify that they are equal to the adjacent positions
-        Assertions.assertEquals(northPosition, position.getPosToSouth());
+        Assertions.assertEquals(northPosition, position.getPosToNorth());
         Assertions.assertEquals(eastPosition, position.getPosToEast());
         Assertions.assertEquals(southPosition, position.getPosToSouth());
         Assertions.assertEquals(westPosition, position.getPosToWest());
