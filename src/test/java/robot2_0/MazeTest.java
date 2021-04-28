@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.StringReader;
 
+/**
+ * A test program to test functionality of the Maze class.
+ * @author Erik Nordström (tfy15enm)
+ */
 class MazeTest {
 
     @Test
